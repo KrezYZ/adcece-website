@@ -391,10 +391,10 @@ body {
 
 .demo-show-tip {
     font-size: 15px;
-    line-height: 2;
+    line-height: 1.7;
     color: var(--premium-light-text);
     max-width: 760px;
-    margin: 0 auto 48px;
+    margin: 0 auto 32px;
     text-align: justify;
     text-align-last: left;
 }
@@ -663,7 +663,7 @@ body {
 
 .contact-us {
     background: var(--premium-light-bg);
-    padding: 80px 24px;
+    padding: 50px 24px;
     text-align: center;
 }
 
@@ -676,15 +676,15 @@ body {
     font-size: 42px;
     font-weight: 700;
     color: var(--premium-dark-900);
-    margin-bottom: 32px;
+    margin-bottom: 20px;
 }
 
 .contact-us-line {
-    height: 12px;
+    height: 6px;
 }
 
 .contact-us-value {
-    padding: 12px 0;
+    padding: 6px 0;
 }
 
 .contact-us-href {
@@ -765,6 +765,9 @@ body {
     font-size: 13px;
     letter-spacing: 0.04em;
     border-top: 1px solid rgba(255,255,255,0.06);
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
 }
 
 /* ============================================================
@@ -1194,15 +1197,14 @@ body {
 }
 
 .why-join-card {
-    flex: 1;
-    min-width: 260px;
-    max-width: 320px;
+    flex: 0 0 calc(33.333% - 19px);
     background: var(--premium-light-bg);
     border-radius: var(--premium-radius-lg);
-    padding: 40px 28px 32px;
+    padding: 36px 24px 28px;
     text-align: left;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid rgba(0,0,0,0.04);
+    box-sizing: border-box;
 }
 
 .why-join-card:hover {
@@ -1237,8 +1239,7 @@ body {
 
 @media (max-width: 900px) {
     .why-join-card {
-        min-width: 100%;
-        max-width: 100%;
+        flex: 0 0 100%;
     }
     .why-join-title {
         font-size: 30px;
