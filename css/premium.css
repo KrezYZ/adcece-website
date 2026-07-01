@@ -361,6 +361,8 @@ body {
     color: var(--premium-light-muted);
     line-height: 1.6;
     font-weight: 400;
+    text-indent: 0;
+    text-align: left;
 }
 
 /* ============================================================
