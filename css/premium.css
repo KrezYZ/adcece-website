@@ -308,7 +308,7 @@ body {
     font-size: 20px;
     font-weight: 600;
     color: var(--premium-dark-800);
-    margin: 48px 0 32px;
+    margin: 64px 0 32px;
     letter-spacing: 0.04em;
     position: relative;
 }
