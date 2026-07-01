@@ -670,7 +670,6 @@ body {
 .contact-us-title {
     max-width: 500px;
     margin: 0 auto;
-    text-align: left;
 }
 
 .contact-us-title-text {
@@ -678,7 +677,6 @@ body {
     font-weight: 700;
     color: var(--premium-dark-900);
     margin-bottom: 20px;
-    text-align: center;
 }
 
 .contact-us-line {
@@ -687,8 +685,8 @@ body {
 
 .contact-us-value {
     padding: 6px 0;
-    text-align: left;
 }
+
 
 .contact-us-href {
     font-family: 'Inter', sans-serif;
@@ -711,6 +709,9 @@ body {
 }
 
 .contact-us-href span:first-child {
+    display: inline-block;
+    min-width: 56px;
+    text-align: right;
     font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
