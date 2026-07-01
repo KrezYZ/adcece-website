@@ -244,6 +244,12 @@ body {
     display: inline-block;
 }
 
+.top-logo-name {
+    font-size: 42px;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+}
+
 .top-logo {
     width: 90px;
     height: 90px;
@@ -910,6 +916,11 @@ body {
         font-size: 28px;
     }
 
+    .top-logo-name {
+        font-size: 28px;
+        letter-spacing: 0.06em;
+    }
+
     .top-logo {
         width: 70px;
         height: 70px;
@@ -973,6 +984,11 @@ body {
 
     .top-logo-title {
         font-size: 28px;
+    }
+
+    .top-logo-name {
+        font-size: 22px;
+        letter-spacing: 0.04em;
     }
 
     .top-text-in {
