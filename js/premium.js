@@ -12,17 +12,23 @@
     // ========================================================
     const header = document.getElementById('header');
     const SCROLL_THRESHOLD = 60;
+    const isSubPage = window.location.pathname.includes('.html') &&
+                      !window.location.pathname.endsWith('index.html');
 
     function updateNavbar() {
         if (!header) return;
-        if (window.scrollY > SCROLL_THRESHOLD) {
+        // 子页面始终显示深色导航栏
+        if (isSubPage || window.scrollY > SCROLL_THRESHOLD) {
             header.classList.add('is-scrolled');
         } else {
             header.classList.remove('is-scrolled');
         }
     }
 
-    // 初始检查（页面可能不是从顶部开始）
+    // 子页面强制显示
+    if (isSubPage) {
+        header.classList.add('is-scrolled');
+    }
     updateNavbar();
     window.addEventListener('scroll', updateNavbar, { passive: true });
 
