@@ -315,13 +315,7 @@ body {
 
 /* 标题下金色短线 */
 .we-do-title::after {
-    content: '';
-    display: block;
-    width: 40px;
-    height: 2px;
-    background: var(--premium-gold);
-    border-radius: 1px;
-    margin: 12px auto 0;
+    display: none;
 }
 
 .we-do-item {
