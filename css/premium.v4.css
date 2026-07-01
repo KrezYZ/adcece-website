@@ -663,7 +663,7 @@ body {
 
 .contact-us {
     background: var(--premium-light-bg);
-    padding: 50px 24px;
+    padding: 80px 24px;
     text-align: center;
 }
 
@@ -676,15 +676,15 @@ body {
     font-size: 42px;
     font-weight: 700;
     color: var(--premium-dark-900);
-    margin-bottom: 20px;
+    margin-bottom: 32px;
 }
 
 .contact-us-line {
-    height: 6px;
+    height: 12px;
 }
 
 .contact-us-value {
-    padding: 6px 0;
+    padding: 12px 0;
 }
 
 
