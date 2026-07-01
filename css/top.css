@@ -1,0 +1,175 @@
+/* =========================
+   TOP / HERO SECTION
+   ========================= */
+
+.top {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #000;
+    overflow: hidden;
+
+    /* 核心：用 Flex 而不是 translateY */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* 背景图 */
+.top-back-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+    z-index: 0;
+    filter: blur(10px);
+    animation: backImg 10s linear infinite,
+    topBackImgOpacity 13s linear infinite;
+}
+
+/* 文本容器 */
+.top-text-box {
+    position: relative;
+    z-index: 100;
+    color: #fff;
+    width: 100%;
+    padding: 30px 20px;
+    box-sizing: border-box;
+}
+
+/* LOGO + 标题 */
+.top-logo-title {
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 50px;
+    color: #ffffff;
+}
+
+.top-logo {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin-bottom: -20px;
+    filter: grayscale(100%);
+    animation: topLogoAnimation 5s linear infinite;
+}
+
+/* 标语 */
+.top-text-in {
+    margin-top: 16px;
+    font-size: 30px;
+    letter-spacing: 6px;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(118,118,118,.5);
+}
+
+.top-text-in div {
+    font-size: inherit;
+}
+
+/* 底部说明文字 */
+.top-bottom-f {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 0 20px;
+    box-sizing: border-box;
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0,0,0,.5);
+}
+
+.top-bottom-f-z {
+    margin: 0 10px;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+/* 向上图标 */
+.top-up-icon {
+    width: 20px;
+    height: 20px;
+    margin-top: 10px;
+    animation: topUpIconAnimation 1s linear infinite;
+}
+
+/* =========================
+   动画
+   ========================= */
+
+@keyframes topLogoAnimation {
+    0% { filter: grayscale(100%); }
+    50% { filter: grayscale(0%); }
+    100% { filter: grayscale(100%); }
+}
+
+@keyframes backImg {
+    0%   { filter: blur(0px); }
+    70%  { filter: blur(5px); }
+    100% { filter: blur(0px); }
+}
+
+@keyframes topBackImgOpacity {
+    0%   { opacity: .5; }
+    50%  { opacity: 1; }
+    100% { opacity: .5; }
+}
+
+@keyframes topUpIconAnimation {
+    0%   { transform: translateY(0); opacity: 1; }
+    50%  { transform: translateY(-10px); opacity: .8; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+/* =========================
+   Mobile (<= 768px)
+   ========================= */
+
+@media (max-width: 768px) {
+
+    .top {
+        justify-content: flex-start; /* 手机上视觉稍偏上更稳 */
+        padding-top: 120px;
+        min-height: 100svh; /* 新 viewport 单位，防地址栏抖动 */
+        /*border-radius: 0 0 30px 30px;*/
+        box-shadow: 0 0 10px rgba(0,0,0,.5);
+    }
+
+    .top-logo-title {
+        font-size: 30px;
+        letter-spacing: 1px;
+    }
+
+    .top-logo {
+        width: 60px;
+        height: 60px;
+        margin-bottom: -10px;
+    }
+
+    .top-text-in {
+        font-size: 18px;
+        letter-spacing: 2px;
+    }
+
+    .top-text-in div {
+        font-size: 14px;
+    }
+
+    .top-bottom-f {
+        font-size: 12px;
+        opacity: .8;
+    }
+
+    .top-bottom-f-z {
+        font-size: 14px;
+    }
+}

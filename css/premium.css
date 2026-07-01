@@ -1,0 +1,1209 @@
+/* ============================================================
+   Premium Overlay — 中欧战略联接协会
+   此文件叠加在原有 CSS 之上，不改动任何原有文件。
+   删除本文件即可回滚到原始样式。
+   ============================================================ */
+
+/* ---- Google Fonts ---- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap');
+
+/* ============================================================
+   1. DESIGN TOKENS — 覆盖原有变量 + 新增品牌变量
+   ============================================================ */
+
+:root {
+    /* ---- 品牌色 ---- */
+    --premium-gold:        #C8A45C;
+    --premium-gold-light:  #DCC890;
+    --premium-gold-dark:   #A07830;
+    --premium-gold-pale:   rgba(200, 164, 92, 0.10);
+
+    /* ---- 深色体系 ---- */
+    --premium-dark-900:    #0D0D0D;
+    --premium-dark-800:    #1A1A1A;
+    --premium-dark-700:    #262626;
+
+    /* ---- 浅色体系 ---- */
+    --premium-light-bg:    #FAF8F5;
+    --premium-light-card:  #FFFFFF;
+    --premium-light-text:  #2C2C2C;
+    --premium-light-muted: #6B6B6B;
+
+    /* ---- 覆盖原有变量 ---- */
+    --kt-color-primary-7:  var(--premium-dark-900);
+    --kt-color-primary-6:  var(--premium-dark-800);
+    --kt-color-primary-5:  #333333;
+
+    /* ---- 阴影 ---- */
+    --premium-shadow-sm:   0 2px 8px  rgba(0,0,0,0.04);
+    --premium-shadow-md:   0 4px 24px rgba(0,0,0,0.06);
+    --premium-shadow-lg:   0 12px 48px rgba(0,0,0,0.10);
+    --premium-shadow-xl:   0 24px 64px rgba(0,0,0,0.14);
+    --premium-shadow-gold: 0 4px 24px rgba(200,164,92,0.18);
+
+    /* ---- 圆角 ---- */
+    --premium-radius-sm:   8px;
+    --premium-radius-md:   12px;
+    --premium-radius-lg:   16px;
+    --premium-radius-xl:   24px;
+}
+
+/* ============================================================
+   2. 全局排版
+   ============================================================ */
+
+body {
+    font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--premium-light-text);
+    background-color: var(--premium-light-bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 中文标题使用衬线体增加高级感 */
+.we-do-big-title,
+.demo-show-title,
+.join-member-title,
+.contact-us-title-text {
+    font-family: 'Noto Serif SC', 'Noto Sans SC', serif;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   3. 导航栏 — Glassmorphism
+   ============================================================ */
+
+.header {
+    height: 56px;
+    padding: 8px 32px;
+    background: transparent;
+    transition: background 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+}
+
+/* JS 会在滚动时添加此 class */
+.header.is-scrolled {
+    background: rgba(13, 13, 13, 0.82);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.06) inset, 0 4px 24px rgba(0,0,0,0.25);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.header .header-col .header-cli {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    border-radius: 6px;
+    padding: 6px 14px;
+    margin-left: 16px;
+    line-height: 32px;
+    transition: color 0.25s, background 0.25s;
+    position: relative;
+}
+
+/* 底部金线下划线动效 */
+.header .header-col .header-cli::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 60%;
+    height: 2px;
+    background: var(--premium-gold);
+    border-radius: 1px;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.header .header-col .header-cli:hover {
+    font-weight: 500;
+    color: var(--premium-gold);
+    animation: none;
+    background: rgba(255,255,255,0.04);
+}
+
+.header .header-col .header-cli:hover::after {
+    transform: translateX(-50%) scaleX(1);
+}
+
+.top-logo-text {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    opacity: 0.85;
+    margin-top: 7px;
+}
+
+.header-logo-img {
+    height: 34px;
+}
+
+/* ---- 手机弹出菜单 ---- */
+.header-popup {
+    background-color: var(--premium-dark-900);
+    border-radius: 0 0 16px 16px;
+    padding: 24px 16px 16px;
+}
+
+.header-popup-item {
+    font-size: 15px;
+    padding: 14px 0;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+}
+
+.header-popup-item:active {
+    color: var(--premium-gold);
+    opacity: 1;
+}
+
+/* ============================================================
+   4. HERO 区域 — 更有冲击力
+   ============================================================ */
+
+.top {
+    min-height: 100vh;
+    min-height: 100svh;
+    background: linear-gradient(160deg,
+        #0a0f1a 0%,
+        #0f1a2e 20%,
+        #132036 40%,
+        #0f1729 60%,
+        #0b101c 80%,
+        #080d16 100%
+    );
+    position: relative;
+    overflow: hidden;
+}
+
+/* 细微的网格纹理 */
+.top::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image:
+        radial-gradient(ellipse at 70% 20%, rgba(200,164,92,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 30% 80%, rgba(200,164,92,0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 60% 60%, rgba(255,255,255,0.02) 0%, transparent 40%);
+    pointer-events: none;
+}
+
+/* 暗色渐变遮罩 */
+.top::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+        180deg,
+        rgba(0,0,0,0.25) 0%,
+        rgba(0,0,0,0.05) 30%,
+        rgba(0,0,0,0.00) 50%,
+        rgba(0,0,0,0.20) 80%,
+        rgba(0,0,0,0.40) 100%
+    );
+    pointer-events: none;
+}
+
+.top-back-img {
+    display: none;
+}
+
+.top-text-box {
+    z-index: 10;
+}
+
+/* 金色装饰线 */
+.top-text::before {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    margin: 0 auto 24px;
+    background: linear-gradient(90deg, transparent, var(--premium-gold), transparent);
+    border-radius: 1px;
+}
+
+.top-logo-title {
+    font-family: 'Noto Serif SC', 'Noto Sans SC', serif;
+    font-size: 56px;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+}
+
+.top-logo-title span {
+    display: inline-block;
+}
+
+.top-logo {
+    width: 110px;
+    height: 110px;
+    margin-bottom: -22px;
+    filter: grayscale(0%) brightness(1.1);
+    animation: topLogoAnimation 6s ease-in-out infinite;
+}
+
+.top-text-in {
+    margin-top: 20px;
+    font-size: 32px;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    color: var(--premium-gold-light);
+    text-shadow: none;
+}
+
+.top-bottom-f {
+    font-size: 15px;
+    letter-spacing: 0.06em;
+    opacity: 0.8;
+    font-weight: 300;
+    bottom: 36px;
+}
+
+.top-up-icon {
+    width: 24px;
+    height: 24px;
+    margin-top: 16px;
+    opacity: 0.7;
+    animation: topUpIconAnimation 2s ease-in-out infinite;
+}
+
+@keyframes topLogoAnimation {
+    0%   { filter: brightness(1) drop-shadow(0 0 0 transparent); }
+    50%  { filter: brightness(1.2) drop-shadow(0 0 20px rgba(200,164,92,0.4)); }
+    100% { filter: brightness(1) drop-shadow(0 0 0 transparent); }
+}
+
+/* ============================================================
+   5. 服务卡片 — "我们能做什么？"
+   ============================================================ */
+
+.we-do {
+    padding: 80px 60px 80px;
+    background: var(--premium-light-bg);
+}
+
+.we-do-big-title {
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--premium-dark-900);
+    letter-spacing: 0.06em;
+}
+
+.we-do-line {
+    height: 32px;
+}
+
+.we-do-title {
+    font-family: 'Noto Serif SC', 'Noto Sans SC', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--premium-dark-800);
+    margin: 48px 0 32px;
+    letter-spacing: 0.04em;
+    position: relative;
+}
+
+/* 标题下金色短线 */
+.we-do-title::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: var(--premium-gold);
+    border-radius: 1px;
+    margin: 12px auto 0;
+}
+
+.we-do-item {
+    width: 280px;
+    min-height: 320px;
+    margin: 16px;
+    padding: 32px 24px 28px;
+    background: var(--premium-light-card);
+    border-radius: var(--premium-radius-lg);
+    box-shadow: var(--premium-shadow-sm);
+    border: 1px solid rgba(0,0,0,0.04);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.35s ease,
+                border-color 0.35s ease;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    vertical-align: top;
+}
+
+.we-do-item:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--premium-shadow-lg);
+    border-color: var(--premium-gold-light);
+}
+
+.we-do-item .we-do-item-img {
+    width: 160px;
+    height: 160px;
+    border-radius: var(--premium-radius-md);
+    margin-bottom: 16px;
+}
+
+.we-do-item-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--premium-dark-800);
+    margin-bottom: 8px;
+}
+
+.we-do-item-small-text {
+    font-size: 13px;
+    color: var(--premium-light-muted);
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* ============================================================
+   6. 关于我们 / 照片墙
+   ============================================================ */
+
+.demo-show {
+    background: var(--premium-light-bg);
+    padding: 60px 0;
+}
+
+.demo-show-box {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.demo-show-title {
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--premium-dark-900);
+    text-align: center;
+    margin-bottom: 32px;
+    letter-spacing: 0.06em;
+}
+
+.demo-show-tip {
+    font-size: 15px;
+    line-height: 2;
+    color: var(--premium-light-text);
+    max-width: 760px;
+    margin: 0 auto 48px;
+    text-align: justify;
+    text-align-last: left;
+}
+
+/* 照片网格 — 等高宽、自然高度 */
+.demo-show-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 16px;
+    box-sizing: border-box;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.demo-show-c-demo-box {
+    width: calc(25% - 8px);
+    flex-shrink: 0;
+    aspect-ratio: auto !important;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: var(--premium-shadow-sm);
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .demo-show-c-demo-box {
+        width: calc(33.33% - 7px);
+    }
+}
+
+@media (max-width: 480px) {
+    .demo-show-c-demo-box {
+        width: calc(50% - 5px);
+    }
+}
+
+.demo-show-c-demo-box:hover {
+    transform: scale(1.03);
+    box-shadow: var(--premium-shadow-lg);
+}
+
+.demo-show-c-demo-back-img {
+    display: block;
+    width: 100%;
+    height: 100% !important;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: #f5f5f5;
+    border-radius: 6px;
+}
+
+/* 竖幅照片保持原始比例 */
+.portrait-img {
+    aspect-ratio: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+}
+
+.c-demo-text {
+    position: static !important;
+    transform: none !important;
+    font-size: 12px;
+    color: var(--premium-light-muted);
+    padding: 8px 4px;
+    background: white;
+    text-align: left;
+    font-weight: 400;
+    box-shadow: none !important;
+    letter-spacing: 0.02em;
+    width: 100%;
+    box-sizing: border-box;
+    left: auto !important;
+    bottom: auto !important;
+    line-height: 1.5;
+}
+
+.demo-show-c-demo-box:hover .c-demo-text {
+    opacity: 1 !important;
+}
+
+/* ============================================================
+   7. 会员加入区域
+   ============================================================ */
+
+.join-member {
+    background: var(--premium-dark-800);
+    padding: 80px 24px;
+    margin-top: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 背景装饰 */
+.join-member::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(200,164,92,0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.join-member-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.join-member-layout {
+    display: flex;
+    gap: 64px;
+    align-items: flex-start;
+}
+
+.join-member-intro {
+    flex: 1;
+    color: #fff;
+}
+
+.join-member-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--premium-gold-light);
+    margin-bottom: 12px;
+}
+
+.join-member-title {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.join-member-desc {
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 28px;
+}
+
+.join-member-points {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.join-member-points li {
+    font-size: 15px;
+    color: rgba(255,255,255,0.85);
+    padding: 8px 0;
+    letter-spacing: 0.03em;
+}
+
+.join-member-points li::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: var(--premium-gold);
+    border-radius: 50%;
+    margin-right: 12px;
+    margin-bottom: 2px;
+}
+
+/* ---- 表单 ---- */
+.join-member-form {
+    flex: 1;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--premium-radius-lg);
+    padding: 36px 32px;
+    backdrop-filter: blur(10px);
+}
+
+.join-member-row {
+    margin-bottom: 16px;
+}
+
+.join-member-row input,
+.join-member-row textarea {
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--premium-radius-sm);
+    color: #fff;
+    font-family: inherit;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+    outline: none;
+}
+
+.join-member-row input::placeholder,
+.join-member-row textarea::placeholder {
+    color: rgba(255,255,255,0.35);
+}
+
+.join-member-row input:focus,
+.join-member-row textarea:focus {
+    border-color: var(--premium-gold);
+    background: rgba(255,255,255,0.12);
+    box-shadow: 0 0 0 3px var(--premium-gold-pale);
+}
+
+.join-member-row textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.join-member-btn {
+    width: 100%;
+    padding: 15px 0;
+    background: linear-gradient(135deg, var(--premium-gold), var(--premium-gold-dark));
+    color: #fff;
+    border: none;
+    border-radius: var(--premium-radius-sm);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: transform 0.25s, box-shadow 0.25s, filter 0.25s;
+    margin-top: 8px;
+}
+
+.join-member-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--premium-shadow-gold);
+    filter: brightness(1.08);
+}
+
+.join-member-btn:active {
+    transform: translateY(0);
+    filter: brightness(0.95);
+}
+
+.join-member-tip {
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 14px;
+}
+
+.join-member-error {
+    color: #E05555;
+    font-size: 13px;
+    margin-bottom: 8px;
+    min-height: 20px;
+    text-align: center;
+}
+
+/* ============================================================
+   8. 联系我们
+   ============================================================ */
+
+.contact-us {
+    background: var(--premium-light-bg);
+    padding: 80px 24px;
+    text-align: center;
+}
+
+.contact-us-title {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.contact-us-title-text {
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--premium-dark-900);
+    margin-bottom: 32px;
+}
+
+.contact-us-line {
+    height: 12px;
+}
+
+.contact-us-value {
+    padding: 12px 0;
+}
+
+.contact-us-href {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: var(--premium-dark-800);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.25s;
+    padding: 10px 20px;
+    border-radius: var(--premium-radius-sm);
+    background: var(--premium-light-card);
+    box-shadow: var(--premium-shadow-sm);
+}
+
+.contact-us-href:hover {
+    color: var(--premium-gold-dark);
+    box-shadow: var(--premium-shadow-md);
+}
+
+.contact-us-href span:first-child {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--premium-light-muted);
+}
+
+/* 微信二维码卡片 */
+.contact-us-img-box {
+    margin-top: 40px;
+}
+
+.contact-us-img-item {
+    display: inline-block;
+}
+
+.contact-us-img-item-in {
+    background: var(--premium-light-card);
+    border-radius: var(--premium-radius-lg);
+    padding: 24px;
+    box-shadow: var(--premium-shadow-md);
+    text-align: center;
+}
+
+.contact-us-img-item-in-img {
+    width: 160px;
+    height: 160px;
+    border-radius: var(--premium-radius-sm);
+}
+
+.contact-us-img-item-in-img-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 12px;
+    font-size: 14px;
+    color: var(--premium-light-muted);
+}
+
+.contact-us-img-item-in-img-text-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* ============================================================
+   9. 页脚
+   ============================================================ */
+
+.footer {
+    background: var(--premium-dark-900);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 32px 24px;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ============================================================
+   10. 语言切换按钮
+   ============================================================ */
+
+.lang-fab {
+    background: var(--premium-dark-800);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 24px;
+    padding: 8px 16px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    box-shadow: var(--premium-shadow-md);
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+
+.lang-fab:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--premium-shadow-lg);
+    border-color: var(--premium-gold);
+}
+
+.lang-sheet-panel {
+    border-radius: var(--premium-radius-xl) var(--premium-radius-xl) 0 0;
+    background: var(--premium-light-card);
+    box-shadow: var(--premium-shadow-xl);
+}
+
+.lang-sheet-header {
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    padding: 20px 24px 16px;
+}
+
+.lang-sheet-title {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.lang-sheet-item {
+    padding: 14px 24px;
+    font-size: 15px;
+    transition: background 0.2s;
+}
+
+.lang-sheet-item:hover {
+    background: var(--premium-gold-pale);
+}
+
+.lang-sheet-item.is-active {
+    color: var(--premium-gold-dark);
+    font-weight: 600;
+}
+
+/* ============================================================
+   11. 滚动淡入动画
+   ============================================================ */
+
+/* 初始隐藏状态 */
+.premium-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* JS 添加此 class 触发动画 */
+.premium-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 延迟变体 — 卡片逐个出现 */
+.premium-reveal-delay-1 { transition-delay: 0.05s; }
+.premium-reveal-delay-2 { transition-delay: 0.10s; }
+.premium-reveal-delay-3 { transition-delay: 0.15s; }
+.premium-reveal-delay-4 { transition-delay: 0.20s; }
+.premium-reveal-delay-5 { transition-delay: 0.25s; }
+
+/* ============================================================
+   12. 无障碍 — 尊重用户动效偏好
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    .premium-reveal,
+    .we-do-item,
+    .demo-show-c-demo-box,
+    .header,
+    .top-logo,
+    .top-up-icon,
+    .top-back-img {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .premium-reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* ============================================================
+   13. 响应式 — 平板
+   ============================================================ */
+
+@media (max-width: 900px) {
+    .join-member-layout {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .join-member {
+        padding: 60px 20px;
+    }
+
+    .join-member-title {
+        font-size: 28px;
+    }
+
+    .we-do {
+        padding: 60px 24px 60px;
+    }
+
+    .we-do-big-title,
+    .demo-show-title,
+    .contact-us-title-text {
+        font-size: 32px;
+    }
+
+    .top-logo-title {
+        font-size: 36px;
+    }
+
+    .top-logo {
+        width: 70px;
+        height: 70px;
+        margin-bottom: -12px;
+    }
+
+    .top-text-in {
+        font-size: 22px;
+    }
+
+    .header {
+        padding: 8px 16px;
+    }
+}
+
+/* ============================================================
+   14. 响应式 — 手机
+   ============================================================ */
+
+@media (max-width: 700px) {
+    .we-do-item {
+        width: calc(50% - 24px);
+        margin: 8px;
+        padding: 20px 12px 20px;
+    }
+
+    .we-do-item .we-do-item-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .we-do-item-text {
+        font-size: 13px;
+    }
+
+    .we-do-item-small-text {
+        font-size: 11px;
+    }
+
+    .we-do-title {
+        font-size: 17px;
+        margin: 36px 0 20px;
+    }
+
+    .join-member-form {
+        padding: 24px 20px;
+    }
+
+    .contact-us-href {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .we-do-item {
+        width: 100%;
+        max-width: 280px;
+        margin: 10px auto;
+    }
+
+    .top-logo-title {
+        font-size: 28px;
+    }
+
+    .top-text-in {
+        font-size: 17px;
+    }
+
+    .top-bottom-f {
+        font-size: 12px;
+    }
+}
+
+/* ============================================================
+   15. SVG 服务图标 — 替换原有丑图标
+   ============================================================ */
+
+.we-do-item-svg {
+    display: block;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px;
+    padding: 28px;
+    background: var(--premium-gold-pale);
+    border-radius: 50%;
+    box-sizing: border-box;
+    transition: background 0.35s, transform 0.35s;
+}
+
+.we-do-item:hover .we-do-item-svg {
+    background: rgba(200, 164, 92, 0.18);
+    transform: scale(1.05);
+}
+
+.we-do-item-svg svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* 金色描边图标 */
+.we-do-item-svg .icon-stroke {
+    fill: none;
+    stroke: var(--premium-gold-dark);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.we-do-item-svg .icon-fill {
+    fill: var(--premium-gold);
+    opacity: 0.3;
+}
+
+.we-do-item-svg .icon-accent {
+    fill: none;
+    stroke: var(--premium-gold);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ============================================================
+   16. 协会足迹板块
+   ============================================================ */
+
+.footprints {
+    padding: 80px 24px 80px;
+    background: #fff;
+    text-align: center;
+}
+
+.footprints-header {
+    margin-bottom: 56px;
+}
+
+.footprints-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: var(--premium-gold-dark);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.footprints-title {
+    font-family: 'Noto Serif SC', 'Noto Sans SC', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--premium-dark-900);
+    letter-spacing: 0.06em;
+    margin-bottom: 16px;
+}
+
+.footprints-subtitle {
+    font-size: 15px;
+    color: var(--premium-light-muted);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.footprints-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footprints-card {
+    position: relative;
+    border-radius: var(--premium-radius-lg);
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 4 / 3;
+    background: #f0f0f0;
+    box-shadow: var(--premium-shadow-sm);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.35s ease;
+}
+
+.footprints-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--premium-shadow-lg);
+}
+
+.footprints-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.footprints-card:hover img {
+    transform: scale(1.06);
+}
+
+.footprints-card-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 16px 20px;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.35s, transform 0.35s;
+}
+
+.footprints-card:hover .footprints-card-caption {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 足迹板块响应式 */
+@media (max-width: 768px) {
+    .footprints {
+        padding: 60px 16px 60px;
+    }
+
+    .footprints-title {
+        font-size: 30px;
+    }
+
+    .footprints-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footprints-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .footprints-card-caption {
+        font-size: 11px;
+        padding: 10px 12px;
+    }
+}
+
+/* ============================================================
+   17. 关于我们 — 纯文字精炼版
+   ============================================================ */
+
+.demo-show {
+    padding: 80px 24px 60px;
+}
+
+.demo-show-box:first-child {
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+/* 关于我们的单个主图（人民大会堂） */
+.about-hero-img {
+    display: block;
+    max-width: 680px;
+    width: 100%;
+    margin: 40px auto 0;
+    border-radius: var(--premium-radius-lg);
+    box-shadow: var(--premium-shadow-lg);
+}
+
+/* ============================================================
+   18. 页脚增强
+   ============================================================ */
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 28px 32px;
+}
+
+.footer-left {
+    color: rgba(255,255,255,0.45);
+    font-size: 13px;
+    letter-spacing: 0.03em;
+}
+
+.footer-right {
+    color: rgba(255,255,255,0.35);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+}
+
+@media (max-width: 600px) {
+    .footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px 16px;
+    }
+}

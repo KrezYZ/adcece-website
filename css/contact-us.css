@@ -1,0 +1,131 @@
+.contact-us {
+    background-color: rgba(245, 247, 252,1);
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+    margin-top: 30px;
+}
+
+.contact-us-title {
+    display: inline-block;
+    float: left;
+}
+
+.contact-us-title-text {
+    font-size: 30px;
+}
+
+.contact-us-line {
+    height: 10px;
+}
+
+.contact-us-line-2 {
+    height: 18px;
+}
+
+.contact-us-value {
+    cursor: pointer;
+    font-size: 15px;
+}
+
+/* =========================
+   ✅ 默认：保持你原先效果（大屏）
+========================= */
+.contact-us-img-box {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.contact-us-img-item {
+    display: inline-block;
+    float: left;
+    padding: 10px;
+    border-radius: 10px;
+    vertical-align: top;
+    margin-left: 30px;
+}
+
+.contact-us-img-item-in {
+    text-align: center;
+}
+
+.contact-us-img-item-in-img {
+    width: 100px;
+    height: 100px;
+}
+
+.contact-us-img-item-in-img-text {
+    font-size: 14px;
+    color: #333333;
+}
+
+.contact-us-img-item-in-img-text-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.contact-us-img-item-in-img-text-text {
+    font-weight: bold;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 10px;
+}
+
+.contact-us-href{
+    text-decoration: none;
+    color: #000000;
+}
+
+
+/* =========================
+   ✅ 小屏：切换成两列，防止乱掉
+   你可以调这个断点：720px / 800px
+========================= */
+@media (max-width: 720px) {
+
+    /* 二维码区域：两列网格 */
+    .contact-us-img-box{
+        display: grid;
+        width: 100%;
+        box-sizing: border-box;
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+
+        margin-top: 20px;
+    }
+
+    /* 卡片：去掉 float/margin-left，不再挤压 */
+    .contact-us-img-item{
+        float: none;
+        display: block;
+        margin-left: 0;
+        padding: 8px;
+        min-width: 0;
+    }
+
+    /* 二维码图片：小屏不要固定死 100x100，改为自适应但不变太大 */
+    .contact-us-img-item-in-img{
+        width: min(140px, 40vw);
+        height: auto;
+    }
+
+    /* 文字那行别乱换行撑爆 */
+    .contact-us-img-item-in-img-text-text{
+        margin-left: 8px;
+        max-width: calc(100% - 40px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+/* 超小屏（真的很窄）再降为 1 列，避免挤到变形 */
+@media (max-width: 380px) {
+    .contact-us-img-box{
+        grid-template-columns: 1fr;
+    }
+    .contact-us-img-item-in-img{
+        width: min(180px, 70vw);
+    }
+}

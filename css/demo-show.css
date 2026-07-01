@@ -1,0 +1,142 @@
+/* =========================================
+   About 关于我们
+   PC 两列（略缩小）
+   Mobile 一列
+========================================= */
+
+.demo-show {
+    padding: 70px 0;
+}
+
+/* 标题区域 */
+.demo-show-box {
+    text-align: center;
+    padding: 0 60px 40px 60px;
+    box-sizing: border-box;
+}
+
+.demo-show-title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+.demo-show-tip {
+    font-size: 15px;
+    max-width: 900px;
+    margin: 0 auto 40px auto;
+    line-height: 1.8;
+    font-weight: 500;
+    color: #333;
+}
+
+/* ===============================
+   取消横向滚动
+================================= */
+
+.demo-show-box-box {
+    white-space: normal;
+    overflow-x: visible;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 30px;
+}
+
+/* ===============================
+   两列布局容器
+================================= */
+
+.demo-show-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+/* ===============================
+   卡片样式（缩小版）
+================================= */
+
+.demo-show-c-demo-box {
+    width: calc(45% - 15px);   /* 比50%小一点，视觉更精致 */
+    position: relative;
+    aspect-ratio: 16 / 10;     /* 稍微扁一点，更商务 */
+    overflow: hidden;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: transform .3s ease;
+}
+
+/* 背景图 */
+.demo-show-c-demo-back-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+    /*filter: blur(5px);*/
+    transition: all 0.4s ease;
+}
+
+/* 中间文字 */
+.c-demo-text {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    letter-spacing: 4px;
+    width: 100%;
+    text-align: center;
+    transition: opacity .3s ease;
+}
+
+/* Hover 动画 */
+.demo-show-c-demo-box:hover {
+    transform: translateY(-4px);
+}
+
+.demo-show-c-demo-box:hover .demo-show-c-demo-back-img {
+    transform: scale(1.06);
+    filter: blur(0);
+}
+
+.demo-show-c-demo-box:hover .c-demo-text {
+    opacity: 0.1;
+}
+
+/* ===============================
+   手机端
+================================= */
+
+@media (max-width: 768px){
+
+    .demo-show-box {
+        padding: 0 20px 30px 20px;
+    }
+
+    .demo-show-title {
+        font-size: 24px;
+    }
+
+    .demo-show-tip {
+        font-size: 14px;
+    }
+
+    .demo-show-flex {
+        gap: 18px;
+    }
+
+    /* 手机一列 */
+    .demo-show-c-demo-box {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+    }
+
+    .c-demo-text {
+        font-size: 16px;
+        letter-spacing: 3px;
+    }
+}

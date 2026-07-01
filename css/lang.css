@@ -1,0 +1,196 @@
+/* =========================
+   Language FAB (PC + Mobile)
+========================= */
+.lang-fab{
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    position: fixed;
+    right: 16px;
+    bottom: 18px;
+    z-index: 9999;
+
+    height: 44px;
+    padding: 0 14px;
+    border-radius: 999px;
+
+    border: 1px solid rgba(0,0,0,.12);
+    background: rgba(255,255,255,.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 10px 22px rgba(0,0,0,.14);
+
+    color: rgba(0,0,0,.86);
+    font-weight: 800;
+    letter-spacing: .5px;
+    cursor: pointer;
+}
+.lang-fab:active{ transform: translateY(1px); }
+
+/* =========================
+   Sheet Overlay (更协调背景：雾感+模糊)
+========================= */
+.lang-sheet{
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+}
+.lang-sheet.is-open{
+    opacity: 1;
+    pointer-events: auto;
+}
+.lang-sheet-bg{
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,.55);
+    backdrop-filter: blur(6px) saturate(120%);
+    -webkit-backdrop-filter: blur(6px) saturate(120%);
+}
+
+/* =========================
+   Panel
+   - PC: 居中
+   - Mobile: 底部（但不全屏）
+   ✅ max-height: calc(100vh - 300px)
+   ✅ 玻璃拟态：与背景更协调
+========================= */
+.lang-sheet-panel{
+    position: absolute;
+    width: min(560px, calc(100% - 32px));
+    max-height: calc(100vh - 300px);
+
+    background: rgba(255,255,255,.78);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+
+    border: 1px solid rgba(255,255,255,.35);
+    border-radius: 22px;
+    box-shadow: 0 28px 90px rgba(0,0,0,.35);
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    transition: transform .22s ease;
+}
+
+/* PC 居中 */
+@media (min-width: 901px){
+    .lang-sheet-panel{
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(.98);
+    }
+    .lang-sheet.is-open .lang-sheet-panel{
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* Mobile 底部（不全屏） */
+@media (max-width: 900px){
+    .lang-sheet-panel{
+        left: 50%;
+        bottom: 86px; /* 留出右下角按钮空间 */
+        transform: translateX(-50%) translateY(10px);
+    }
+    .lang-sheet.is-open .lang-sheet-panel{
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* header */
+.lang-sheet-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 14px 12px 14px;
+
+    background: rgba(255,255,255,.55);
+    border-bottom: 1px solid rgba(0,0,0,.06);
+}
+.lang-sheet-title{
+    font-size: 14px;
+    font-weight: 900;
+    color: rgba(0,0,0,.75);
+}
+.lang-sheet-close{
+    border: 1px solid rgba(0,0,0,.06);
+    background: rgba(0,0,0,.06);
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: rgba(0,0,0,.7);
+}
+
+/* list scroll */
+.lang-sheet-list{
+    padding: 12px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* items：半透明卡片，融入背景 */
+.lang-sheet-item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 12px 12px;
+    margin: 8px 4px;
+    border-radius: 14px;
+
+    text-decoration: none;
+    color: rgba(0,0,0,.86);
+
+    background: rgba(255,255,255,.55);
+    border: 1px solid rgba(0,0,0,.06);
+    box-shadow: 0 10px 22px rgba(0,0,0,.06);
+}
+.lang-sheet-item:hover{
+    background: rgba(255,255,255,.70);
+}
+
+/* ✅ 选中项：黑灰体系（更像“玻璃高亮”，不会突兀） */
+.lang-sheet-item.is-active{
+    background: rgba(255,255,255,.82);
+    border-color: rgba(0,0,0,.18);
+    box-shadow: 0 14px 30px rgba(0,0,0,.10);
+}
+
+.lang-sheet-item-name{
+    font-size: 14px;
+    font-weight: 900;
+}
+.lang-sheet-item-sub{
+    margin-top: 4px;
+    font-size: 12px;
+    color: rgba(0,0,0,.55);
+    font-weight: 700;
+}
+
+.lang-sheet-item-right{
+    font-size: 18px;
+    color: rgba(0,0,0,.40);
+    font-weight: 900;
+}
+
+/* ✅ 勾勾/右侧符号：黑色 */
+.lang-sheet-item.is-active .lang-sheet-item-right{
+    color: rgba(0,0,0,.85);
+}
+
+@media (max-width: 420px){
+    .lang-sheet-panel{
+        width: calc(100% - 24px);
+        bottom: 78px;
+    }
+}
+
+.lang-icon{
+    /* 黑白滤镜 */
+    filter: invert(1)
+}

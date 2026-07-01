@@ -1,0 +1,116 @@
+.staff-member-title {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    padding: 0 60px 30px 60px;
+    box-sizing: border-box;
+}
+
+
+.staff-member-box {
+    cursor: pointer;
+    background-color: #FFFFFF;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    width: 180px;
+    display: inline-block;
+    margin-right: 30px;
+    text-align: center;
+}
+
+.staff-member-info-box {
+    padding: 5px 10px 10px 10px;
+    font-size: 14px;
+}
+
+.staff-member-img-box {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+}
+
+.staff-member-img {
+    display: inline-block;
+    vertical-align: top;
+    width: 180px;
+    height: 150px;
+    border-radius: 10px 10px 0 0;
+    object-fit: cover;
+}
+
+.staff-member-info {
+    margin-top: 5px;
+    color: #666;
+    font-size: 12px;
+    /*// 超过换行*/
+    word-break: break-all;
+    /*// 开头缩进*/
+    text-indent: 2em;
+    /*// 限制高度*/
+    height: 80px;
+    /*// 超过省略号*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /*// 换行*/
+    white-space: pre-wrap;
+/*/ / 超过上下滚动 */
+    overflow-y: auto;
+}
+
+.staff-member-info::-webkit-scrollbar {
+    width: 5px;
+}
+
+.staff-member-info::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #c1c1c1;
+}
+
+/*// .info的轨道*/
+.staff-member-info::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #f1f1f1;
+}
+
+
+.staff-member-box-box {
+    box-sizing: border-box;
+    /*// 不换行*/
+    white-space: nowrap;
+    /*// 滚动条*/
+    overflow-x: scroll;
+    max-width: calc(100% - 30px);
+    margin: 0 auto;
+    text-align: center;
+}
+
+.staff-member-box-box::-webkit-scrollbar {
+    display: none;
+}
+
+.staff-member-name-profession {
+    float: right;
+}
+
+.staff-member-name-profession-line {
+    height: 5px;
+}
+
+.staff-member-name-profession-text {
+    color: #666;
+    font-size: 10px;
+    float: right;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+
+    .staff-member-title{
+        font-size: 25px;
+    }
+
+}
+
+.staff-member-name{
+    text-align: left;
+}
